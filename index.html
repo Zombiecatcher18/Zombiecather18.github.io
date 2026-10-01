@@ -38,6 +38,13 @@
             border-bottom: 1px solid #30363d;
         }
 
+        h3 {
+            color: #f0f6fc;
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
         p { margin-bottom: 12px; }
 
         a {
@@ -46,6 +53,14 @@
         }
 
         a:hover { text-decoration: underline; }
+
+        code {
+            background: #21262d;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: "SF Mono", Monaco, Consolas, monospace;
+        }
 
         .project {
             background: #161b22;
@@ -59,6 +74,7 @@
             color: #f0f6fc;
             font-size: 1.2em;
             margin-bottom: 8px;
+            margin-top: 0;
         }
 
         .project img {
@@ -68,12 +84,12 @@
             border: 1px solid #30363d;
         }
 
-        .project ul {
+        ul {
             margin-left: 20px;
-            margin-top: 12px;
+            margin-bottom: 12px;
         }
 
-        .project li { margin-bottom: 6px; }
+        li { margin-bottom: 6px; }
 
         .links {
             list-style: none;
@@ -81,6 +97,7 @@
             flex-wrap: wrap;
             gap: 16px;
             margin-top: 12px;
+            margin-left: 0;
         }
 
         .links a {
@@ -116,7 +133,8 @@
         <p>
             Self-taught Unity developer with 3 years of structured game-development training.
             Currently building <strong>Project R</strong>, an original turn-based RPG with a
-            QTE-driven combo system, planned for public release on Steam and itch.io.
+            QTE-driven combo system and pattern-reading enemy AI, planned for public release
+            on Steam and itch.io.
         </p>
 
         <h2>Featured Project</h2>
@@ -125,19 +143,37 @@
             <h3>Project R — Turn-Based RPG with QTE Combat</h3>
             <p>
                 An original RPG in active development. Players build a combo from a hand of moves,
-                then execute each move through a timed QTE challenge. Combat rewards timing,
-                sequencing, and reading enemy patterns.
+                then execute each move through a timed QTE challenge. Enemies learn your patterns
+                and counter predictable behavior — combat rewards timing, sequencing, and
+                unpredictability, not just raw stats.
             </p>
-            <img src="https://private-user-images.githubusercontent.com/244250819/662399225-f67cab06-eb11-4545-8322-81031ac8756f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3OTA4NTExOTIsIm5iZiI6MTc5MDg1MDg5MiwicGF0aCI6Ii8yNDQyNTA4MTkvNjYyMzk5MjI1LWY2N2NhYjA2LWViMTEtNDU0NS04MzIyLTgxMDMxYWM4NzU2Zi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYxMDAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MTAwMVQxMDM0NTJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kNjA5M2Q0NTA1Y2JiZWE0Nzk2NDdmNzlkYTVhZTg4ZTA4ODRlZGVlMzViZjcyMzJlMmM5NjkwMzBlZTA5ZGIzJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.zdHjD59YEx_AFCXY39v-TLCR3S4ztEqG6lAAtRC6V-8" alt="Project R combat screenshot">
-            <p><strong>Systems I built:</strong></p>
+            <img src="https://raw.githubusercontent.com/Zombiecatcher18/Project-R/main/screenshot.png" alt="Project R combat screenshot">
+
+            <h3>Systems I Built</h3>
             <ul>
-                <li>Turn-based battle loop with alternating turns and a tug-of-war turn meter</li>
-                <li>QTE-driven combo execution (Timing bar + Button prompt variants)</li>
-                <li>Enemy AI with awareness → prediction → counter systems</li>
-                <li>Move data model with synergy and anti-synergy chains</li>
-                <li>Bounty / level-up progression integrated with combat</li>
-                <li>Full battle lifecycle from setup through victory or defeat</li>
+                <li><strong>Turn-based battle loop</strong> — alternating turns with a tug-of-war turn meter between player and enemy momentum</li>
+                <li><strong>QTE combo execution</strong> — timing bar + button prompt variants, per-hit resolution, damage scaling by QTE rank</li>
+                <li><strong>Pattern awareness AI</strong> — tracks move spam, opener repeats, finisher repeats, and QTE timing; switches to <em>prediction mode</em> to counter repeated behavior</li>
+                <li><strong>Personality profiles</strong> — per-enemy behavior profiles (Aggressive, Trickster, Balanced, Adaptive, Defensive) that modify move weighting, QTE speed, fakeout frequency, and counter chance</li>
+                <li><strong>Fakeout system</strong> — enemy feints that punish reactive players; fakeout frequency scales with demonstrated player skill</li>
+                <li><strong>Enemy combo builder</strong> — shared team slot bar with per-enemy move decks and AI-driven combo construction</li>
+                <li><strong>Synergy &amp; sabotage</strong> — enemies cooperate or sabotage based on relationship scores; player moves chain through good/bad synergy lists</li>
+                <li><strong>Bounty / rank progression</strong> — bounty accumulates toward level-ups that unlock new moves, increase slots, and expand deck size</li>
+                <li><strong>Multi-enemy battles</strong> — target selection, per-enemy anchor points, and multi-target support</li>
+                <li><strong>Full battle lifecycle</strong> — setup, combat, victory/defeat, and return to overworld</li>
             </ul>
+
+            <h3>Technical Highlights</h3>
+            <ul>
+                <li><strong>Zero-allocation coroutine helpers</strong> — <code>WaitCache</code> reuses <code>WaitForSeconds</code> instances to reduce GC pressure during battle loops</li>
+                <li><strong>Cached component references</strong> — player controller, character controller, and camera are cached at battle start to avoid <code>GetComponent</code>/<code>FindWithTag</code> calls in hot paths</li>
+                <li><strong>Re-entrancy guards</strong> — <code>enemyTurnRunning</code> and <code>battleInitialized</code> flags prevent duplicate coroutine execution and premature turn advancement</li>
+                <li><strong>Runtime data cloning</strong> — per-battle enemy state is cloned from ScriptableObjects so mutations (HP loss, stat changes, memory) don't corrupt source assets</li>
+                <li><strong>Personality-driven AI biases</strong> — all behavior modifiers multiply through a shared <code>EnemyPersonalityProfile</code>, allowing tuning without code changes</li>
+                <li><strong>Pattern tracking with history trimming</strong> — AI memory uses fixed-size lists with <code>TrimHistory()</code> to bound growth over long battles</li>
+                <li><strong>Decoupled move data</strong> — <code>AttackMove</code> ScriptableObjects allow moves to be authored, balanced, and linked for synergy without touching code</li>
+            </ul>
+
             <ul class="links">
                 <li><a href="https://github.com/Zombiecatcher18/Project-R">GitHub Repo</a></li>
                 <li><a href="#">itch.io (Coming Soon)</a></li>
@@ -149,7 +185,7 @@
         <ul class="links">
             <li><a href="https://github.com/Zombiecatcher18">GitHub</a></li>
             <li><a href="https://www.tiktok.com/@thatonegamedev18">TikTok</a></li>
-            <li><a href="https://youtube.com/@zombiecatcher18?si=PfYEQViCB00UicuN">YouTube</</li>
+            <li><a href="https://youtube.com/@zombiecatcher18">YouTube</a></li>
             <li><a href="https://www.linkedin.com/in/dj-ramirez-0445b8407/">LinkedIn</a></li>
         </ul>
 
@@ -160,7 +196,7 @@
         </p>
 
         <footer>
-            © 2026 Zombiecather18. Built with GitHub Pages.
+            © 2026 Zombiecatcher18. Built with GitHub Pages.
         </footer>
 
     </div>
